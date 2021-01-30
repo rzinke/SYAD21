@@ -3,34 +3,35 @@
 Class definitions for tables.
 '''
 ### MODULES ---
-from Shapely import Polygon
+from shapely.geometry import Polygon;
 
 
 
 ### CLASSES ---
 class table:
-    def __init__(self, tableType, position, size):
+    CIRCULAR = 1;
+    RECTANGULAR = 2;
+
+    def __init__(self, position, size):
         '''
-        Make Mathew happy.
+        Try to make Mathew happy. FAILED
         '''
-        if tableType in ['circle', 'circular']:
-            self.table = circular_table(position, size)
-
-        elif tableType in ['rectangular']:
-            self.table = rectangular_table(position, *size)
+        self.position = position;
+        self.size = size;
 
 
-class circular_table:
+class circular_table(table):
     def __init__(self, (x,y), r):
         '''
         Define a circular table. Inherit from table class.
         '''
-        pass
+        table.__init__(self, (x,y), r);
 
 
-class rectangular_table:
+class rectangular_table(table):
     def __init__(self, (x, y), l, w):
         '''
         Define a rectangular table. Inherit from table class.
         '''
-        pass
+        table.__init__(self, (x,y), r);
+        
