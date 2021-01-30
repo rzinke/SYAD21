@@ -19,6 +19,10 @@ class table:
         self.position = position;
         self.size = size;
 
+        self.border_people = None;
+        self.border_table = None;
+        self.border_social_distance = None;
+
 
 class circular_table(table):
     def __init__(self, (x,y), r):
