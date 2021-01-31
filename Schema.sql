@@ -1,0 +1,34 @@
+
+
+
+CREATE TABLE `Restaurant`
+(
+	`id` INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
+	`start` TIME NOT NULL DEFAULT '08:00:00',
+	`end` TIME NOT NULL DEFAULT '22:00:00',
+	`address` VARCHAR(128) DEFAULT NULL,
+	`rating` TINYINT DEFAULT 0,
+	`name` VARCHAR(32)
+);
+
+
+CREATE TABLE `RestaurantPoints`
+(
+	`id` INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
+	`Restaurant.id` INT UNSIGNED DEFAULT NULL,
+	FOREIGN KEY (`Restaurant.id`) REFERENCES `Restaurant`(`id`),
+	`position_x` INT UNSIGNED NOT NULL,
+	`position_y` INT UNSIGNED NOT NULL
+);
+
+
+CREATE TABLE `Table`
+(
+	`id` INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
+	`Restaurant.id` INT UNSIGNED DEFAULT NULL,
+	FOREIGN KEY (`Restaurant.id`) REFERENCES `Restaurant`(`id`),
+	`color` VARCHAR(32) NOT NULL DEFAULT 'blue',
+	`position_x` INT UNSIGNED NOT NULL,
+	`position_y` INT UNSIGNED NOT NULL,
+	`radius` DECIMAL(6, 3) NOT NULL -- max of 999.999
+);
